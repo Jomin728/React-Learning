@@ -9,18 +9,36 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@apollo/client": "^3.10.6",
+    "@auth/prisma-adapter": "^2.2.0",
+    "@nextui-org/react": "^2.4.2",
+    "@prisma/client": "^5.15.1",
+    "apollo-server-micro": "^3.13.0",
+    "bcrypt": "^5.1.1",
+    "framer-motion": "^11.2.11",
+    "graphql": "^16.9.0",
+    "graphql-codegen": "^0.4.0",
+    "graphql-tag": "^2.12.6",
+    "next": "14.2.3",
+    "next-auth": "^4.24.7",
     "react": "^18",
-    "react-dom": "^18",
-    "next": "14.2.3"
+    "react-dom": "^18"
   },
   "devDependencies": {
-    "typescript": "^5",
+    "@graphql-codegen/cli": "^5.0.2",
+    "@graphql-codegen/client-preset": "^4.3.1",
+    "@graphql-codegen/typescript-resolvers": "^4.2.0",
+    "@graphql-codegen/typescript-rtk-query": "^3.1.1",
+    "@rtk-query/graphql-request-base-query": "^2.3.1",
+    "@types/bcrypt": "^5.0.2",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
-    "postcss": "^8",
-    "tailwindcss": "^3.4.1",
     "eslint": "^8",
-    "eslint-config-next": "14.2.3"
+    "eslint-config-next": "14.2.3",
+    "postcss": "^8",
+    "prisma": "^5.15.1",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5"
   }
 }
