@@ -14,8 +14,8 @@ export const auth = NextAuth({
     adapter: prismaAdapter,
     providers:[
         Github({
-            clientId: 'Ov23liRLeM5O0pzM4VGY',
-            clientSecret: 'a27d76780f93696c72b13bfc7dfee90b959cfdde',
+            clientId: GITHUB_CLIENT_ID,
+            clientSecret: GITHUB_CLIENT_SECRET,
           }),
         Credentials({
           id: 'credentials',
@@ -69,7 +69,7 @@ export const auth = NextAuth({
         return session
       },
     },
-    secret: 'jesus is lord'
+    secret: 'jomin rajesh koottummel'
 
   })
 

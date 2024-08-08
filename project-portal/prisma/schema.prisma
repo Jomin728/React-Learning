@@ -10,7 +10,8 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = "postgres://project_portal_user:zBHVeiyXsOWNRnP2oA0YRP7yj3mJ7cOt@dpg-cpjvjm021fec73a4v4l0-a.singapore-postgres.render.com/project_portal"
+  url      = "postgresql://project_portal_20va_user:fdzpzwF1JnKxbWPUEQw0YIBGlIlDzGx1@dpg-cqosnkg8fa8c73c1mblg-a.singapore-postgres.render.com/project_portal_20va"
+              
 }
 
 model User {
@@ -26,6 +27,11 @@ model User {
  
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  projectsManaged Project[]
+  applications Applicants[]
+  projectEndDate DateTime?
+  band String?
+  certification String[]
 }
  
 model Account {
@@ -65,6 +71,41 @@ model VerificationToken {
   expires    DateTime
  
   @@id([identifier, token])
+}
+
+model Project {
+  id String @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  projectTitle String
+  projectDescription String
+  tags String[]
+  projectContact String
+  managerEmail String
+  creatorId String
+  creator User @relation(fields:[creatorId],references:[id],onDelete:NoAction)
+  projectLocation String
+  account String
+  applicants appliedToProject[]
+
+}
+
+model Applicants {
+  id String @id @default(cuid())
+  appliedDate DateTime @default(now())
+  status String
+  applicantUserId String
+  appliedUser User @relation(fields:[applicantUserId],references:[id],onDelete:NoAction)
+  projectsApplied appliedToProject[]
+}
+
+model appliedToProject{
+  project Project @relation(fields:[projectId],references:[id])
+  projectId String
+  applicant Applicants @relation(fields:[applicantId],references:[id])
+  applicantId String
+  assignedAt DateTime @default(now())
+  @@id([projectId, applicantId])
 }
 
 enum Role {
